@@ -27,7 +27,7 @@ Installation
 ------------
 
 * Create a directory for storing videos. By default it is `/www/tcw/episodes/`. You can change `ROOT` variable in `flasksrv.py` to point to another location if desired.
-* Configure `nginx` (or another web server) to serve the contents if created directory from location `/m/`:
+* Configure `nginx` (or another web server) to serve the contents of created directory from location `/m/`:
 
 ```
 location /m/ {
