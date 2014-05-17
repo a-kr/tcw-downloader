@@ -32,7 +32,6 @@ Installation
 ```
 location /m/ {
     alias /www/tcw/episodes/;
-    autoindex on;
 }
 ```
 
