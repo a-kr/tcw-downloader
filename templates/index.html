@@ -1,0 +1,38 @@
+<!doctype HTML>
+<html>
+<head><title>The Clone Wars</title></head>
+<body>
+<h1>Episode List</h1>
+<style>
+    table {
+        border-collapse: collapse;
+    }
+    td {
+        border: dotted 1px gray;
+    }
+</style>
+
+<table>
+{% for episode in episodes %}
+<tr>
+    <td>{{ episode.id }}</td>
+    <td>{{ episode.title }}</td>
+    <td>---</td>
+    <td>
+        {% if not episode.encoded and not episode.in_progress %}<a href="/get/{{ episode.id }}/">Get</a>{% endif %}
+    </td>
+    <td>
+        {% if episode.in_progress %}<a href="/progress/{{ episode.id }}/">Progress</a>{% endif %}
+    </td>
+    <td>---</td>
+    <td>
+        {% if episode.encoded %}<a href="/watch/{{ episode.id }}/">WATCH</a>{% endif %}
+    </td>
+    <td>---</td>
+    <td>
+        {% if episode.encoded or episode.in_progress %}<a href="/rm/{{ episode.id }}/">Remove</a>{% endif %}
+    </td>
+</tr>
+{% endfor %}
+</ol>
+</body>

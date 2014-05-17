@@ -1,0 +1,41 @@
+<!doctype HTML>
+<html>
+<head><title>{{ id }} {{ title }}</title></head>
+<body>
+<style>
+    table {
+        border-collapse: collapse;
+    }
+    td {
+        border: dotted 1px gray;
+    }
+</style>
+
+<p align="left">
+<a href="/">List of episodes</a>
+</p>
+{% if next %}
+<p align="right">
+<a href="/watch/{{ next.id }}/">Next: {{next.id }} {{next.title}}</a>
+</p>
+{% endif %}
+
+<h1>{{ id }} {{ title }}</h1>
+
+{% if encoded %}
+<center>
+    <video width="864" height="480" controls>
+    <source src="/m/{{ id }}/output.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+</center>
+{% else %}
+    {% if in_progress %}
+        Video is being encoded. <a href="/progress/{{ id }}/">See logfile</a>
+    {% else %}
+        Video is not downloaded yet. <a href="/get/{{ id }}/">Download and encode video</a>
+    {% endif %}
+{% endif %}
+
+
+</body>

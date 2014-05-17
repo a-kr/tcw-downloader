@@ -1,0 +1,33 @@
+<!doctype HTML>
+<html>
+<head>
+    <title>Log contents</title>
+    {% if not encoded %}
+    <meta http-equiv="refresh" content="5">
+    {% endif %}
+</head>
+<body>
+{% if encoded %}
+<p><a href="/watch/{{ se }}/">Watch</a></p>
+{% endif %}
+
+<pre>
+{{ last_lines }}
+</pre>
+{% if not encoded %}
+Something went wrong? <a href="/rm/{{ se }}/">Delete video</a> and start again.
+{% endif %}
+
+<hr>
+
+<font color="#707070">
+<pre>
+{{ log }}
+</pre>
+</font>
+
+{% if encoded %}
+<p><a href="/watch/{{ se }}/">Watch</a></p>
+{% endif %}
+
+</body>
