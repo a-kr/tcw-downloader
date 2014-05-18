@@ -44,5 +44,5 @@ If desired, you can run the application using `uwsgi`, `gunicorn` or any other W
 Changelog
 ---------
 
-2014-05-18  nowvideo.eu, movshare.net now supported in addition to gorillavid.in
-2014-05-17  Initial release
+* 2014-05-18  nowvideo.eu, movshare.net now supported in addition to gorillavid.in
+* 2014-05-17  Initial release
