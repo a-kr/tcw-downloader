@@ -3,18 +3,7 @@ tcw-downloader
 
 Small webapp which can download, encode and serve The Clone Wars episodes available on tubeplus.me.
 
-Currently only those episodes which are hosted on gorillavid.in can be downloaded, which leaves at least six episodes unavailable:
-
-```
-s1e17
-s3e14
-s4e17
-s4e18
-s5e11
-s5e13
-```
-
-Also, there is a possiblity that some existing links to gorillavid.in are broken.
+The app supports downloading videos hosted on gorillavid.in, nowvideo.eu, movshare.net. Together these video hostings cover all available TCW episodes, but there is always a possibility of broken links.
 
 Requirements
 ------------
@@ -52,3 +41,8 @@ If desired, you can run the application using `uwsgi`, `gunicorn` or any other W
 * Open `http://localhost:5001/` in your web browser
 
 
+Changelog
+---------
+
+2014-05-18  nowvideo.eu, movshare.net now supported in addition to gorillavid.in
+2014-05-17  Initial release

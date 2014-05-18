@@ -19,7 +19,7 @@
     <td>{{ episode.title }}</td>
     <td>---</td>
     <td>
-        {% if not episode.encoded and not episode.in_progress %}<a href="/get/{{ episode.id }}/">Get</a>{% endif %}
+        {% if not episode.encoded and not episode.in_progress %}<a href="/select-host/{{ episode.id }}/">Get</a>{% endif %}
     </td>
     <td>
         {% if episode.in_progress %}<a href="/progress/{{ episode.id }}/">Progress</a>{% endif %}

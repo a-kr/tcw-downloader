@@ -11,11 +11,12 @@
 <p><a href="/watch/{{ se }}/">Watch</a></p>
 {% endif %}
 
+Last 5 lines of log:
 <pre>
 {{ last_lines }}
 </pre>
 {% if not encoded %}
-Something went wrong? <a href="/rm/{{ se }}/">Delete video</a> and start again.
+Seen something wrong in the log (e.g. a crash, a 404)?  <a href="/rm/{{ se }}/">Delete video</a> and start again.
 {% endif %}
 
 <hr>

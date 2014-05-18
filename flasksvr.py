@@ -56,13 +56,21 @@ def get_next_info_by_id(se):
     return None
 
 
-def get_flv_url(se):
+def get_flv_url(se, method):
+    getter = parser.DOWNLOAD_METHODS[method]
     info = get_info_by_id(se)
     for _, _id, _host in info['links']:
-        url = parser.get_flv_url(_id, _host)
-        if url:
-            return url
+        if _host == method:
+            return getter(_host, _id)
     return None
+
+def get_download_methods(se):
+    info = get_info_by_id(se)
+    methods = []
+    for _, _, _host in info['links']:
+        if _host in parser.DOWNLOAD_METHODS:
+            methods.append(_host)
+    return methods
 
 @app.route('/')
 def hello_world():
@@ -92,8 +100,17 @@ def watch_page(se=None):
     ctx['next'] = get_next_info_by_id(se)
     return render_template('watch.html', **ctx)
 
-@app.route('/get/<se>/')
-def get_page(se=None):
+@app.route('/select-host/<se>/')
+def select_host_page(se=None):
+    """ Choose download method """
+    info = get_info_by_id(se)
+    ctx = info.copy()
+    ctx['se'] = se
+    ctx['methods'] = get_download_methods(se)
+    return render_template('select_host.html', **ctx)
+
+@app.route('/get/<se>/<method>/')
+def get_page(se=None, method=None):
     """ Start downloading and encoding the episode (in background)"""
     info = get_info_by_id(se)
     ctx = info.copy()
@@ -104,7 +121,7 @@ def get_page(se=None):
     if in_process:
         return redirect('/progress/' + se + '/')
 
-    flv_url = get_flv_url(se)
+    flv_url = get_flv_url(se, method)
     if not flv_url:
         return render_template('message.html', msg="Error: Cannot find flv for this video")
 
@@ -114,7 +131,7 @@ def get_page(se=None):
 
     shell_script = [
         'set -e',
-        'echo STARTING %s...' % se,
+        'echo "STARTING %s from %s..."' % (se, method),
         'date',
         'cd %s' % ep_dir,
         'wget "%s" -O "%s"' % (flv_url, 'input.flv'),

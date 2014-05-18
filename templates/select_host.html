@@ -1,0 +1,13 @@
+<!doctype HTML>
+<html>
+<head><title>The Clone Wars</title></head>
+<body>
+<h1>Select download source</h1>
+Available download methods for {{ se }}:
+
+<ol>
+{% for method in methods %}
+    <li><a href="/get/{{ se }}/{{ method }}/">{{ method }}</a><br/>&nbsp;</li>
+{% endfor %}
+</ol>
+</body>
