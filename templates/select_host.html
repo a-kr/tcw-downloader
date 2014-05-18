@@ -7,7 +7,7 @@ Available download methods for {{ se }}:
 
 <ol>
 {% for method in methods %}
-    <li><a href="/get/{{ se }}/{{ method }}/">{{ method }}</a><br/>&nbsp;</li>
+    <li><a href="/get/{{ se }}/{{ method.host }}/{{ method.file_id }}/">{{ method.host }}</a> {{ method.file_id }}<br/>&nbsp;</li>
 {% endfor %}
 </ol>
 </body>
